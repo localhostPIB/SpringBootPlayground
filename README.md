@@ -1,4 +1,4 @@
-# SpringBootPlayground
+# Spring Boot Playground
 Playground of destruction ;-)
 
 ## Built With
