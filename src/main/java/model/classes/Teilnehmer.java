@@ -1,11 +1,14 @@
 package model.classes;
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 import lombok.Setter;
-import model.classes.interfaces.ITeilnehmer;
 
 import javax.persistence.*;
+
+import model.interfaces.ITeilnehmer;
+
 
 @Getter
 @Setter
@@ -42,4 +45,14 @@ public class Teilnehmer implements ITeilnehmer {
     @Column(unique = true, nullable = false)
     private String eMail;
 
+    public Teilnehmer(String vorname, String nachname, String strasse, String plz, String hausnummer, String ort, String land, String eMail) {
+        this.vorname    = vorname;
+        this.nachname   = nachname;
+        this.strasse    = strasse;
+        this.plz        = plz;
+        this.hausnummer = hausnummer;
+        this.ort        = ort;
+        this.land       = land;
+        this.eMail      = eMail;
+    }
 }

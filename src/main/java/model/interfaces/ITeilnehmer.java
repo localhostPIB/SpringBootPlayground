@@ -1,4 +1,4 @@
-package model.classes.interfaces;
+package model.interfaces;
 
 public interface ITeilnehmer {
 

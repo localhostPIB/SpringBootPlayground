@@ -1,6 +1,7 @@
 package dao;
 
 import model.classes.Teilnehmer;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TeilnehmerRepository extends CrudRepository<Teilnehmer, Integer> {
 
-    //TODO
+
 }
