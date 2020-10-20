@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TeilnehmerRepository extends CrudRepository<Teilnehmer, Integer> {
+    Teilnehmer findTeilnehmerById(Integer id);
 }

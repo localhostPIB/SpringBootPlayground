@@ -43,6 +43,20 @@ public class TeilnehmerService implements ITeilnehmerService {
     }
 
     /**
+     * Loescht alle Personen aus der Datenbank.
+     */
+    @Override
+    public void deleAllTeilnehmer() {
+
+        teilnehmerRepository.deleteAll();
+    }
+
+    @Override
+    public Teilnehmer findTeilnehmerbyId(Integer id) {
+        return teilnehmerRepository.findTeilnehmerById(id);
+    }
+
+    /**
      * Gibt alle Teilnehmer aus.
      *
      * @return - ArrayListe mit allen Teilnehmer.

@@ -16,7 +16,7 @@ public class Teilnehmer implements ITeilnehmer {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private String id;
+    private Integer id;
 
     @Column(nullable = false)
     private String vorname;

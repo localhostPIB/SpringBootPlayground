@@ -2,9 +2,9 @@ package com.example.SpringBootPlayground.model.interfaces;
 
 public interface ITeilnehmer {
 
-    String getId();
+    Integer getId();
 
-    void setId(String id);
+    void setId(Integer id);
 
     String getVorname();
 
