@@ -1,7 +1,8 @@
 package com.example.SpringBootPlayground.servicesTest;
 
-import model.classes.Teilnehmer;
-import model.interfaces.ITeilnehmer;
+
+import com.example.SpringBootPlayground.model.classes.Teilnehmer;
+import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -11,14 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import services.classes.TeilnehmerService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
-@SuppressWarnings("ALL")
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

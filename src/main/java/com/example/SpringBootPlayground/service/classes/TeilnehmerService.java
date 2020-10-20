@@ -1,11 +1,11 @@
-package services.classes;
+package com.example.SpringBootPlayground.service.classes;
 
-import dao.TeilnehmerRepository;
-import model.classes.Teilnehmer;
-import services.interfaces.ITeilnehmerService;
-
+import com.example.SpringBootPlayground.dao.TeilnehmerRepository;
+import com.example.SpringBootPlayground.model.classes.Teilnehmer;
+import com.example.SpringBootPlayground.service.interfaces.ITeilnehmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,3 +56,4 @@ public class TeilnehmerService implements ITeilnehmerService {
         return teilnehmerArrayList;
     }
 }
+

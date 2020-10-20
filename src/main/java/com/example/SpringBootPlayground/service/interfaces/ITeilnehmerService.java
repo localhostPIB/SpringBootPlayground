@@ -1,7 +1,6 @@
-package services.interfaces;
+package com.example.SpringBootPlayground.service.interfaces;
 
-import model.classes.Teilnehmer;
-
+import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 
 public interface ITeilnehmerService {
 

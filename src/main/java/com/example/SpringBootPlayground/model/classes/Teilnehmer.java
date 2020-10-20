@@ -1,14 +1,11 @@
-package model.classes;
+package com.example.SpringBootPlayground.model.classes;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-
-import model.interfaces.ITeilnehmer;
-
 
 @Getter
 @Setter
@@ -56,3 +53,5 @@ public class Teilnehmer implements ITeilnehmer {
         this.eMail      = eMail;
     }
 }
+
+

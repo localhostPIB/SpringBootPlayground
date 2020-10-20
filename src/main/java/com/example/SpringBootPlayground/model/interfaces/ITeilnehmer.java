@@ -1,4 +1,4 @@
-package model.interfaces;
+package com.example.SpringBootPlayground.model.interfaces;
 
 public interface ITeilnehmer {
 
@@ -38,3 +38,4 @@ public interface ITeilnehmer {
 
     void setEMail(String email);
 }
+
