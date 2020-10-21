@@ -11,7 +11,15 @@
 <body>
 <p class="h4" th:text="Teilnahmeformular"><em></em></p>
 
-<form action="#" th:action="@{/Formular}" method="post">
+<form action="#" th:action="@{/Formular}"  th:object="${geschlecht}" method="post">
+
+    <select th:field="*{art}" class="form-control-sm" id="geschlecht" name="geschlecht">
+        <div th:each ="geschlecht : ${anredeList}">
+            <option th:text="${geschlecht.art}" th:value="${geschlecht.art} "></option>
+        </div>
+    </select>
+
+
 <div class="form-group">
     <label for="vorname" th:text="Vorname"></label>
     <input type="text" minlength="2" pattern="^[a-zA-ZßÄÖÜäöü]{1,99}-?[a-zA-ZßÄÖÜäöü]" class="form-control" id="vorname" name="vorname" placeholder=" Bitte Vornamen eingeben" required/>
@@ -39,7 +47,7 @@
 
 <div class="form-group">
     <label for="hausnummer" th:text="Hausnummer"></label>
-    <input type="text"  minlength="2" pattern="^[0-9]-?[a-z]?" class="form-control" id="hausnummer" name="hausnummer" placeholder=" Bitte Hausnummer eingeben" required/>
+    <input type="text"  minlength="1" pattern="^[0-9]-?[a-z]?" class="form-control" id="hausnummer" name="hausnummer" placeholder=" Bitte Hausnummer eingeben" required/>
 </div>
 
 <div class="form-group">

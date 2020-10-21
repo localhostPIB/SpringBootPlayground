@@ -1,6 +1,7 @@
 package com.example.SpringBootPlayground.model.classes;
 
 import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Teilnehmer")
 @NoArgsConstructor
+@AllArgsConstructor
 public class Teilnehmer implements ITeilnehmer {
 
     @Id
@@ -42,7 +44,10 @@ public class Teilnehmer implements ITeilnehmer {
     @Column(unique = true, nullable = false)
     private String eMail;
 
-    public Teilnehmer(String vorname, String nachname, String strasse, String plz, String hausnummer, String ort, String land, String eMail) {
+    @OneToOne(cascade = CascadeType.ALL) //TODO
+    private Geschlecht geschlecht;
+
+    public Teilnehmer(String vorname, String nachname, String strasse, String plz, String hausnummer, String ort, String land, String eMail, Geschlecht geschlecht) {
         this.vorname    = vorname;
         this.nachname   = nachname;
         this.strasse    = strasse;
@@ -51,6 +56,7 @@ public class Teilnehmer implements ITeilnehmer {
         this.ort        = ort;
         this.land       = land;
         this.eMail      = eMail;
+        this.geschlecht = geschlecht;
     }
 }
 

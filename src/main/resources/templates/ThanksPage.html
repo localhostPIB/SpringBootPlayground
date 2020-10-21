@@ -9,7 +9,13 @@
 </head>
 <body>
 <form action="#" th:action="@{/Thankspage}" method="post" th:object="${teilnehmer}">
+    <td th:text="Danke fuer die Teilnahme"></td>
+    <br><br>
+    <td th:text="Nachname "></td>
     <td th:text="${teilnehmer.getNachname()}"></td>
+    <br><br>
+    <td th:text="Vorhname "></td>
+    <td th:text="${teilnehmer.getVorname()}"></td>
 </form>
 </body>
 </html>
