@@ -1,7 +1,6 @@
 package com.example.SpringBootPlayground.servicesTest;
 
 
-import com.example.SpringBootPlayground.model.classes.Geschlecht;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 
@@ -39,12 +38,11 @@ public class TeilnehmerServiceTest {
     @Before
     public void init(){
         teilnehmerList = new ArrayList<>();
-        Geschlecht geschlecht = new Geschlecht();
-       // teilnehmer1
-         //       = new Teilnehmer("Freddy","Krueger","Elm Street","12345","1428", "Ohio", "USA","FK1428@example.com" );
+        teilnehmer1
+                = new Teilnehmer("Freddy","Krueger","Elm Street","12345","1428", "Ohio", "USA","FK1428@example.com", "Herr" );
 
-        //teilnehmer2
-          //      = new Teilnehmer("Jason","Voorhees","Crystal lake","67895","1", "New York", "USA","BackWoods1951@example.com" );
+        teilnehmer2
+                = new Teilnehmer("Jason","Voorhees","Crystal lake","67895","1", "New York", "USA","BackWoods1951@example.com", "Herr" );
 
 
         teilnehmerList.add(teilnehmer1);

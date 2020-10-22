@@ -2,6 +2,7 @@ package com.example.SpringBootPlayground.service.classes;
 
 import com.example.SpringBootPlayground.dao.TeilnehmerRepository;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
+import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
 import com.example.SpringBootPlayground.service.interfaces.ITeilnehmerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

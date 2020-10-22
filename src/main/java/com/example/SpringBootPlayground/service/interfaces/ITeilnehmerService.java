@@ -1,6 +1,7 @@
 package com.example.SpringBootPlayground.service.interfaces;
 
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
+import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
 
 public interface ITeilnehmerService {
 
@@ -10,5 +11,5 @@ public interface ITeilnehmerService {
 
     void deleAllTeilnehmer();
 
-    Teilnehmer findTeilnehmerbyId(Integer id);
+    ITeilnehmer findTeilnehmerbyId(Integer id);
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Getter
 @Setter
 @Entity
@@ -44,10 +45,11 @@ public class Teilnehmer implements ITeilnehmer {
     @Column(unique = true, nullable = false)
     private String eMail;
 
-    @OneToOne(cascade = CascadeType.ALL) //TODO
-    private Geschlecht geschlecht;
 
-    public Teilnehmer(String vorname, String nachname, String strasse, String plz, String hausnummer, String ort, String land, String eMail, Geschlecht geschlecht) {
+    private String geschlecht;
+
+    public Teilnehmer(String vorname, String nachname, String strasse, String plz, String hausnummer, String ort,
+                      String land, String eMail, String geschlecht) {
         this.vorname    = vorname;
         this.nachname   = nachname;
         this.strasse    = strasse;
