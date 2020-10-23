@@ -8,13 +8,21 @@
     <script type="text/javascript" th:src="@{js/main.js}"></script>
 </head>
 <body>
-    <p class="font-weight-normal">Danke fuer die Teilnahme</p>
-    <br><br>
-    <td th:text="Nachname "></td>
-    <td th:text="${teilnehmer.getNachname()}"></td>
-    <br><br>
-    <td th:text="Vorhname "></td>
-    <td th:text="${teilnehmer.getVorname()}"></td>
+<table border="1">
+    <tr>
+        <th>Vorname: </th>
+        <th>Nachname: </th>
+        <th>E-Mail: </th>
+        <th>Land: </th>
+    </tr>
+        <tr th:each ="teilnehmer : ${teilnehmers}">
+        <td th:text="${teilnehmer.getVorname()}">...</td>
+        <td th:text="${teilnehmer.getNachname()}">...</td>
+        <td th:text="${teilnehmer.getEMail()}">...</td>
+            <td th:text="${teilnehmer.getLand()}">...</td>
+        </tr>
+</table>
 
 </body>
+<a href="/winner" class="btn btn-outline-dark" role="button">Gewinner ermitteln</a>
 </html>

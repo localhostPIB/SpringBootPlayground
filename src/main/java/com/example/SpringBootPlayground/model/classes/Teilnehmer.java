@@ -1,10 +1,7 @@
 package com.example.SpringBootPlayground.model.classes;
 
 import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +9,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@ToString
 @Table(name = "Teilnehmer")
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link   href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/jquery/3.3.1-1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" th:src="@{js/main.js}"></script>
+</head>
+<body>
+<h1>... And the winner is....</h1>
+<td th:text="${gewinner.getGeschlecht()}">...</td>&#160<td th:text="${gewinner.getVorname()}">...</td>
+<td th:text="${gewinner.getNachname()}">...</td> aus <td th:text="${gewinner.getOrt()}">...</td>
+(<td th:text="${gewinner.getLand()}">...</td>)
+</body>
+</html>
