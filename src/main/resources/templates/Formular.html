@@ -11,7 +11,7 @@
 <body>
 <p class="h4" th:text="Teilnahmeformular"><em></em></p>
 
-<form action="#" th:action="@{/Formular}" method="post">
+<form action="#" th:action="@{/formular}" method="post">
 
     <select class="form-control" id="geschlecht" name="geschlecht">
         <option>Herr</option>
@@ -61,7 +61,7 @@
     <input type="text"  minlength="2" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" class="form-control" id="eMail" name="eMail" placeholder=" Bitte Email eingeben" required/>
 </div>
 <br/>
-<button type="submit" class="btn btn-primary" name="send" value="me" th:text="Senden"></button>
+<button type="submit" class="btn btn-primary" th:text="Senden"></button>
 </form>
 
 </div>

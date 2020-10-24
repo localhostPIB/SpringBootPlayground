@@ -7,7 +7,7 @@
     <script src="webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" th:src="@{js/main.js}"></script>
 </head>
-<body>
+<br>
 <table border="1">
     <tr>
         <th>Vorname: </th>
@@ -22,7 +22,15 @@
             <td th:text="${teilnehmer.getLand()}">...</td>
         </tr>
 </table>
-
+<br/>
+<br/>
+<button onclick="myFunction()">Gewinner ermitteln</button>
+<p id="winner"></p>
+<script type="text/javascript">
+    function myFunction() {
+        document.getElementById("winner").innerHTML = $ajax({});
+    }
+</script>
 </body>
-<a href="/winner" class="btn btn-outline-dark" role="button">Gewinner ermitteln</a>
+<!--<a href="/winner" class="btn btn-outline-dark" role="button">Gewinner ermitteln</a> -->
 </html>

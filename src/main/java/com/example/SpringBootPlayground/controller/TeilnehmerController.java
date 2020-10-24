@@ -25,9 +25,10 @@ public class TeilnehmerController {
      * @return
      */
     @GetMapping("/")
-    private String showFormular(Model model){
+    private String showFormular(Model model, HttpSession httpSession){
+        httpSession.removeAttribute("teilnehmer");
 
-        return "Formular";
+        return "formular";
     }
 
     /**
@@ -58,6 +59,11 @@ public class TeilnehmerController {
     private String complete(Model model){
         model.addAttribute("teilnehmers",teilnehmerService.getAllTeilnehmer());
 
+        int anzahlTeilnehmer   = RandomUtils.getTeilnehmerGewinner(teilnehmerService);
+        int randomPickerNumber = RandomUtils.getRandomNumber(anzahlTeilnehmer);
+        Teilnehmer gewinner    = teilnehmerService.getAllTeilnehmer().get(randomPickerNumber);
+
+        model.addAttribute("gewinner", gewinner);
 
         return "ThanksPage";
     }
