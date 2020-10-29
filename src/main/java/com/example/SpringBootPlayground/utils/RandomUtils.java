@@ -15,7 +15,7 @@ public class RandomUtils {
      * @return - Anzahl aller Teilnehmer.
      */
     public static int getTeilnehmerGewinner(TeilnehmerService teilnehmerService){
-       int anzahl = teilnehmerService.getAllTeilnehmer().size() - 1;
+       int anzahl = teilnehmerService.getAllTeilnehmer().size() - Constans.ONE;
 
         return anzahl;
     }
@@ -28,7 +28,7 @@ public class RandomUtils {
      * @return - Zufallswert.
      */
     public static int getRandomNumber(int anzahlTeilnehmer){
-        int randomNumber = (int) ((int)Math.round(anzahlTeilnehmer * Math.random()));
+        int randomNumber = ((int)Math.round(anzahlTeilnehmer * Math.random()));
 
         return randomNumber;
     }

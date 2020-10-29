@@ -3,7 +3,9 @@ package com.example.SpringBootPlayground.controller;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 import com.example.SpringBootPlayground.utils.RandomUtils;
+import com.example.SpringBootPlayground.validators.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class TeilnehmerController {
+
+    @Value("${email.message}")
+    private String errorMessage;
 
     @Autowired
     private TeilnehmerService teilnehmerService;
@@ -38,16 +43,22 @@ public class TeilnehmerController {
      * @param teilnehmer
      * @param httpSession
      *
-     * @return - Weiterleitung auf die Auflistung der Teilnehmer.
+     * @return
      */
     @PostMapping("/formular")
-    private String registerUser(Model model, Teilnehmer teilnehmer, HttpSession httpSession){
-        teilnehmerService.saveTeilnehmer(teilnehmer);
-        httpSession.setAttribute("teilnehmer",teilnehmer.getId());
-        model.addAttribute("teilnehmers",teilnehmerService.getAllTeilnehmer());
+    private String registerUser(Model model, Teilnehmer teilnehmer, HttpSession httpSession) {
 
-        return "Thankspage";
-    }
+            if(EmailValidator.validateEmail(teilnehmer, teilnehmerService.getAllTeilnehmer())){
+                teilnehmerService.saveTeilnehmer(teilnehmer);
+                httpSession.setAttribute("teilnehmer", teilnehmer.getId());
+                model.addAttribute("teilnehmers", teilnehmerService.getAllTeilnehmer());
+
+                return "Thankspage";
+            }
+
+            model.addAttribute("emailerror",errorMessage);
+            return "/formular";
+        }
 
     /**
      * Auflistung der Teilnehmer.
@@ -83,6 +94,18 @@ public class TeilnehmerController {
         model.addAttribute("gewinner", gewinner);
 
         return "Winner";
+    }
+
+
+    @GetMapping(value = "/winner2")
+    private Teilnehmer findWinner2(Model model){
+        int anzahlTeilnehmer   = RandomUtils.getTeilnehmerGewinner(teilnehmerService);
+        int randomPickerNumber = RandomUtils.getRandomNumber(anzahlTeilnehmer);
+        Teilnehmer gewinner    = teilnehmerService.getAllTeilnehmer().get(randomPickerNumber);
+
+        model.addAttribute("gewinner", gewinner);
+
+        return gewinner;
     }
 
 }
