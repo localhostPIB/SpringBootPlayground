@@ -26,22 +26,25 @@
 <br/>
 <br/>
 <p id="winner"></p>
+
 <script type="text/javascript">
   //  $("#winner").click(function() {
     //    alert( "Handler for .click() called." );
    // });
 
-  $(document).ready()
-
-    //function test(gewinner) {
-      //  document.getElementById("winner").innerHTML = gewinner;
-    //}
+    function test() {
+      //  document.getElementById("winner").innerHTML = gewinner.value;
+        var test = document.getElementById(gewinner).value;
+        alert("Und der Gewinner ist:" +test );
+    }
 </script>
 </body>
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" id="bth-winnerc"
+        <button type="submit" id="bth-winner" onclick="test()"
                 class="btn btn-primary btn-lg">Gewinner ermitteln
         </button>
+    </div>
+</div>
 <!--<a href="/winner" class="btn btn-outline-dark" role="button">Gewinner ermitteln</a> -->
 </html>
