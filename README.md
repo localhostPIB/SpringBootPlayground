@@ -1,4 +1,4 @@
-# Spring Boot Playground
+# Spring Boot Playground v0.5
 Playground of destruction ;-)
 
 ## Built With
@@ -12,7 +12,8 @@ vor Programmstart (von Maven) runtergeladen werden (können).
 
 * [Spring-Boot](https://spring.io/projects/spring-boot)
 * [Hibernate](https://hibernate.org/)
-* [H2 Database Engine](http://www.h2database.com/html/main.html)
+* ~~[H2 Database Engine](http://www.h2database.com/html/main.html)~~
+* [MongoDB](https://www.mongodb.com)
 * [Lombok](https://projectlombok.org/)
 * [Junit 4](https://junit.org/junit4/)
 * [Thymeleaf](https://www.thymeleaf.org/)

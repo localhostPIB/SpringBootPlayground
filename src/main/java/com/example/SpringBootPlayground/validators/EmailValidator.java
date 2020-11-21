@@ -17,7 +17,7 @@ public class EmailValidator {
     public static boolean validateEmail(Teilnehmer teilnehmer, List<Teilnehmer> teilnehmerList){
 
         for(Teilnehmer teilnehmer1 : teilnehmerList){
-            if(teilnehmer1.getEMail().equals(teilnehmer.getEMail())){
+            if(teilnehmer1.getEmail().equals(teilnehmer.getEmail())){
                 return false;
             }
         }

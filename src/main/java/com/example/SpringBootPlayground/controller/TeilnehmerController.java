@@ -50,7 +50,7 @@ public class TeilnehmerController {
 
             if(EmailValidator.validateEmail(teilnehmer, teilnehmerService.getAllTeilnehmer())){
                 teilnehmerService.saveTeilnehmer(teilnehmer);
-                httpSession.setAttribute("teilnehmer", teilnehmer.getId());
+                httpSession.setAttribute("teilnehmer", teilnehmer.getEmail());
                 model.addAttribute("teilnehmers", teilnehmerService.getAllTeilnehmer());
 
                 return "Thankspage";

@@ -2,14 +2,13 @@ package com.example.SpringBootPlayground.service.classes;
 
 import com.example.SpringBootPlayground.dao.TeilnehmerRepository;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
-import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
 import com.example.SpringBootPlayground.service.interfaces.ITeilnehmerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Service um den Teilnehmer zu verarbeiten.
@@ -17,9 +16,14 @@ import java.util.List;
 @Service
 public class TeilnehmerService implements ITeilnehmerService {
 
+    //@Autowired
+    //private TeilnehmerRepository teilnehmerRepository;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
+
     @Autowired
     private TeilnehmerRepository teilnehmerRepository;
-
 
     /**
      * Speichert den Teilnehmer des Formulars.
@@ -28,8 +32,11 @@ public class TeilnehmerService implements ITeilnehmerService {
      */
     @Override
     public void saveTeilnehmer(Teilnehmer teilnehmer) {
-
-        teilnehmerRepository.save(teilnehmer);
+        if(teilnehmerRepository.findTeilnehmerByEmail(teilnehmer.getEmail()) == null) {
+            teilnehmerRepository.save(teilnehmer);
+        }else{
+            System.err.println("Bereits teilgenommen:\t"+teilnehmer.toString());
+        }
     }
 
     /**
@@ -40,7 +47,7 @@ public class TeilnehmerService implements ITeilnehmerService {
     @Override
     public void deleteTeilnehmer(Teilnehmer teilnehmer){
 
-        teilnehmerRepository.delete(teilnehmer);
+        teilnehmerRepository.deleteByEmail(teilnehmer.getEmail());
     }
 
     /**
@@ -53,8 +60,8 @@ public class TeilnehmerService implements ITeilnehmerService {
     }
 
     @Override
-    public Teilnehmer findTeilnehmerbyId(Integer id) {
-        return teilnehmerRepository.findTeilnehmerById(id);
+    public Teilnehmer findTeilnehmerbyEmail(String email) {
+        return teilnehmerRepository.findTeilnehmerByEmail(email);
     }
 
     /**

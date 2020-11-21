@@ -2,9 +2,9 @@ package com.example.SpringBootPlayground.model.interfaces;
 
 public interface ITeilnehmer {
 
-    Integer getId();
+   // String getId();
 
-    void setId(Integer id);
+    //void setId(String id);
 
     String getVorname();
 
@@ -34,8 +34,8 @@ public interface ITeilnehmer {
 
     void setLand(String land);
 
-    String getEMail();
+    String getEmail();
 
-    void setEMail(String email);
+    void setEmail(String email);
 }
 

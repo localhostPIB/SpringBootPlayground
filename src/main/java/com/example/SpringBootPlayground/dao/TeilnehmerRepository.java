@@ -2,11 +2,12 @@ package com.example.SpringBootPlayground.dao;
 
 
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
-import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-@Repository
-public interface TeilnehmerRepository extends CrudRepository<Teilnehmer, Integer> {
-    Teilnehmer findTeilnehmerById(Integer id);
+
+
+public interface TeilnehmerRepository extends MongoRepository<Teilnehmer, String> {
+    Teilnehmer findTeilnehmerByEmail(String email);
+
+    Teilnehmer deleteByEmail(String email);
 }

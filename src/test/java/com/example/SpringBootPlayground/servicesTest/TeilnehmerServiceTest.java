@@ -49,6 +49,8 @@ public class TeilnehmerServiceTest {
         teilnehmerList.add(teilnehmer2);
     }
 
+
+    // todo Findby email  , check ids ,onetoone..... joins
     /**
      * Testet die Speicherfunktion.
      */
@@ -57,24 +59,37 @@ public class TeilnehmerServiceTest {
         teilnehmerService.saveTeilnehmer(teilnehmer1);
         teilnehmerService.saveTeilnehmer(teilnehmer2);
 
-       assertEquals(teilnehmerList.size(), teilnehmerService.getAllTeilnehmer().size());
+       assertEquals("",4, teilnehmerService.getAllTeilnehmer().size());
+    }
+
+    @Test
+    public void aa_testfindall(){
+        System.out.println(teilnehmerService.getAllTeilnehmer());
+        assertEquals(teilnehmerService.getAllTeilnehmer().size(),4);
     }
 
     /**
-     * Testet die Loeschfunktion.
+     * Testet die Loeschfunktion. anhand der Id
      */
     @Test
     public void b_testDeleteTeilnehmer(){
         teilnehmerService.deleteTeilnehmer(teilnehmer1);
 
-        assertEquals(teilnehmerList.size(), teilnehmerService.getAllTeilnehmer().size());
+        assertEquals(3, teilnehmerService.getAllTeilnehmer().size());
+    }
+
+    @Test
+    public void c_testFindByEmail(){
+        String test = "SawIsFamily@example.com";
+        Teilnehmer testTeilnehmer = teilnehmerService.findTeilnehmerbyEmail(test);
+        assertEquals(testTeilnehmer.getEmail(), test);
     }
 
     /**
      * Testet die Loeschfunktion (Loescht alle Teilnehmer).
      */
     @Test
-    public void c_testDeleteAllTeilnehmer(){
+    public void d_testDeleteAllTeilnehmer(){
         teilnehmerService.deleAllTeilnehmer();
         teilnehmerList.clear();
 

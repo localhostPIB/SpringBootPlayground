@@ -2,46 +2,50 @@ package com.example.SpringBootPlayground.model.classes;
 
 import com.example.SpringBootPlayground.model.interfaces.ITeilnehmer;
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.*;
+//import javax.persistence.*;
 
 
 @Getter
 @Setter
-@Entity
 @ToString
-@Table(name = "Teilnehmer")
+@Document
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Teilnehmer implements ITeilnehmer {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Integer id;
+    //@Id
+    //@GeneratedValue(strategy= GenerationType.AUTO)
+    //private String id;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String vorname;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String nachname;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String strasse;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String plz;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String hausnummer;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String ort;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String land;
 
-    @Column(unique = true, nullable = false)
-    private String eMail;
+    //@Column(unique = true, nullable = false)
+    @Id
+    @Indexed(unique = true)
+    private String email;
 
 
     private String geschlecht;
@@ -55,7 +59,7 @@ public class Teilnehmer implements ITeilnehmer {
         this.hausnummer = hausnummer;
         this.ort        = ort;
         this.land       = land;
-        this.eMail      = eMail;
+        this.email      = eMail;
         this.geschlecht = geschlecht;
     }
 }

@@ -11,5 +11,5 @@ public interface ITeilnehmerService {
 
     void deleAllTeilnehmer();
 
-    ITeilnehmer findTeilnehmerbyId(Integer id);
+    ITeilnehmer findTeilnehmerbyEmail(String email);
 }
