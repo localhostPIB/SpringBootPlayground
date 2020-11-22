@@ -10,4 +10,5 @@ public interface TeilnehmerRepository extends MongoRepository<Teilnehmer, String
     Teilnehmer findTeilnehmerByEmail(String email);
 
     Teilnehmer deleteByEmail(String email);
+
 }

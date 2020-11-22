@@ -1,6 +1,8 @@
 package com.example.SpringBootPlayground.servicesTest;
 
 
+import com.example.SpringBootPlayground.dao.PlanetRepository;
+import com.example.SpringBootPlayground.model.classes.Planet;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 
@@ -28,7 +30,10 @@ public class TeilnehmerServiceTest {
     @Autowired
     private TeilnehmerService teilnehmerService;
 
-    private Teilnehmer teilnehmer1, teilnehmer2;
+    @Autowired
+    private PlanetRepository planetRepository;
+
+    private Teilnehmer teilnehmer1, teilnehmer2, teilnehmer3;
 
     private List<Teilnehmer> teilnehmerList;
 
@@ -50,7 +55,7 @@ public class TeilnehmerServiceTest {
     }
 
 
-    // todo Findby email  , check ids ,onetoone..... joins
+    // todo , check ids ,onetoone..... joins
     /**
      * Testet die Speicherfunktion.
      */
@@ -85,12 +90,26 @@ public class TeilnehmerServiceTest {
         assertEquals(testTeilnehmer.getEmail(), test);
     }
 
+    @Test
+    public void d_saveWithPlanet(){
+        Planet planetMars = new Planet("Mars");
+        planetRepository.save(planetMars);
+        teilnehmer3
+                = new Teilnehmer("The","Thing","Fake Street","666","1", "Moon", "??","TheThing@example.com", "Herr" );
+        teilnehmer3.setPlanet(planetMars);
+
+        teilnehmerService.saveTeilnehmer(teilnehmer3);
+        System.out.println(teilnehmer3.toString());
+        assertEquals(planetMars, teilnehmer3.getPlanet());
+    }
+    
     /**
      * Testet die Loeschfunktion (Loescht alle Teilnehmer).
      */
     @Test
-    public void d_testDeleteAllTeilnehmer(){
+    public void e_testDeleteAllTeilnehmer(){
         teilnehmerService.deleAllTeilnehmer();
+        planetRepository.deleteAll();
         teilnehmerList.clear();
 
         assertEquals(teilnehmerList.size(), teilnehmerService.getAllTeilnehmer().size());

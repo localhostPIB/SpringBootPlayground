@@ -6,6 +6,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import javax.persistence.*;
 
 
@@ -47,6 +50,7 @@ public class Teilnehmer implements ITeilnehmer {
     @Indexed(unique = true)
     private String email;
 
+    private Planet planet;
 
     private String geschlecht;
 
@@ -62,6 +66,7 @@ public class Teilnehmer implements ITeilnehmer {
         this.email      = eMail;
         this.geschlecht = geschlecht;
     }
+
 }
 
 
