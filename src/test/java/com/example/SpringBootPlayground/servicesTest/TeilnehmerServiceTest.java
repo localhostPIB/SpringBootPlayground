@@ -6,6 +6,8 @@ import com.example.SpringBootPlayground.model.classes.Planet;
 import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 
+import com.example.SpringBootPlayground.service.classes.UploadService;
+import org.apache.commons.io.IOUtils;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -14,8 +16,13 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +39,9 @@ public class TeilnehmerServiceTest {
 
     @Autowired
     private PlanetRepository planetRepository;
+
+    @Autowired
+    private UploadService uploadService;
 
     private Teilnehmer teilnehmer1, teilnehmer2, teilnehmer3;
 
@@ -91,12 +101,21 @@ public class TeilnehmerServiceTest {
     }
 
     @Test
-    public void d_saveWithPlanet(){
+    public void d_saveWithPlanet() throws IOException {
         Planet planetMars = new Planet("Mars");
         planetRepository.save(planetMars);
+
         teilnehmer3
                 = new Teilnehmer("The","Thing","Fake Street","666","1", "Moon", "??","TheThing@example.com", "Herr" );
         teilnehmer3.setPlanet(planetMars);
+        //todo
+        File file = new File("src/Fotos","53581.jpg");
+
+        FileInputStream input = new FileInputStream(file);
+        MultipartFile multipartFile = new MockMultipartFile("file",
+                file.getName(), "image/png", IOUtils.toByteArray(input));
+
+        uploadService.addPhoto("test", multipartFile ,planetMars);
 
         teilnehmerService.saveTeilnehmer(teilnehmer3);
         System.out.println(teilnehmer3.toString());

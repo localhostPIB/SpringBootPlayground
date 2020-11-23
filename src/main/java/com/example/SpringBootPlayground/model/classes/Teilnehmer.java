@@ -12,9 +12,7 @@ import java.util.List;
 //import javax.persistence.*;
 
 
-@Getter
-@Setter
-@ToString
+@Data
 @Document
 @NoArgsConstructor
 //@AllArgsConstructor
