@@ -7,7 +7,9 @@ import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 
 import com.example.SpringBootPlayground.service.classes.UploadService;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.bson.types.Binary;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -24,6 +26,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -65,7 +68,7 @@ public class TeilnehmerServiceTest {
     }
 
 
-    // todo , check ids ,onetoone..... joins
+    // todo ,onetoone..... joins
     /**
      * Testet die Speicherfunktion.
      */
@@ -103,12 +106,10 @@ public class TeilnehmerServiceTest {
     @Test
     public void d_saveWithPlanet() throws IOException {
         Planet planetMars = new Planet("Mars");
-        planetRepository.save(planetMars);
 
         teilnehmer3
                 = new Teilnehmer("The","Thing","Fake Street","666","1", "Moon", "??","TheThing@example.com", "Herr" );
-        teilnehmer3.setPlanet(planetMars);
-        //todo
+
         File file = new File("src/Fotos","53581.jpg");
 
         FileInputStream input = new FileInputStream(file);
@@ -116,17 +117,31 @@ public class TeilnehmerServiceTest {
                 file.getName(), "image/png", IOUtils.toByteArray(input));
 
         uploadService.addPhoto("test", multipartFile ,planetMars);
-
+        planetRepository.save(planetMars);
+        teilnehmer3.setPlanet(planetMars);
         teilnehmerService.saveTeilnehmer(teilnehmer3);
         System.out.println(teilnehmer3.toString());
         assertEquals(planetMars, teilnehmer3.getPlanet());
     }
-    
+
+    @Test
+    public void e_testStorePhoto() throws IOException {
+       Planet planet = planetRepository.findPlanetById("5fbbfda77031d9604d761dbc");
+
+        byte[] image = planet.getImage().getData();
+        File file = new File("src/Fotos/" + "test.jpg");
+        FileUtils.writeByteArrayToFile(file, image);
+
+
+       assertEquals(planet.getName(),"Mars" );
+    }
+
+
     /**
      * Testet die Loeschfunktion (Loescht alle Teilnehmer).
      */
     @Test
-    public void e_testDeleteAllTeilnehmer(){
+    public void f_testDeleteAllTeilnehmer(){
         teilnehmerService.deleAllTeilnehmer();
         planetRepository.deleteAll();
         teilnehmerList.clear();
