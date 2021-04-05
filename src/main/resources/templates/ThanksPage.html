@@ -31,12 +31,34 @@
   //  $("#winner").click(function() {
     //    alert( "Handler for .click() called." );
    // });
+  $("bth-winner").keyup(function(){
 
-    function test() {
+      $.ajax({
+          url: "/winner2",
+          type: "get", //send it through get method
+          data: {
+              //inputParameter: value , // your get parameter(s)
+              //inputParameter2: value2,
+              //inputParameter3: value3
+          },
+          success: function(msg) {
+              //Do Something on successful Ajax call
+              alert('Gewinner ist' +msg);
+          },
+          error: function(xhr) {
+              //Do Something to handle error
+          }
+      });
+
+
+  });
+
+
+   // function test() {
       //  document.getElementById("winner").innerHTML = gewinner.value;
-        var test = document.getElementById(gewinner).value;
-        alert("Und der Gewinner ist:" +test );
-    }
+      //  var test = document.getElementsByName(${gewinner.getVorname()}).value;
+       // alert("Und der Gewinner ist:" +test );
+    //}
 </script>
 </body>
 <div class="form-group">

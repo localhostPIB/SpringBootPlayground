@@ -67,8 +67,6 @@ public class TeilnehmerServiceTest {
         teilnehmerList.add(teilnehmer2);
     }
 
-
-    // todo ,onetoone..... joins
     /**
      * Testet die Speicherfunktion.
      */
@@ -121,6 +119,7 @@ public class TeilnehmerServiceTest {
         teilnehmer3.setPlanet(planetMars);
         teilnehmerService.saveTeilnehmer(teilnehmer3);
         System.out.println(teilnehmer3.toString());
+
         assertEquals(planetMars, teilnehmer3.getPlanet());
     }
 
@@ -131,9 +130,10 @@ public class TeilnehmerServiceTest {
         byte[] image = planet.getImage().getData();
         File file = new File("src/Fotos/" + "test.jpg");
         FileUtils.writeByteArrayToFile(file, image);
+        planet.setName("Mond");
+        planetRepository.save(planet);
 
-
-       assertEquals(planet.getName(),"Mars" );
+       assertNotEquals(planet.getName(),"Mars" );
     }
 
 

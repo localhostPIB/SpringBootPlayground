@@ -1,6 +1,13 @@
 # Spring Boot Playground v0.5
 Playground of destruction ;-)
 
+## Getting Started (Mit Docker)
+1) Sicherstellen, das Port 8080 frei ist. Ggf. laufende Container-Instanzen stoppen (oder Port bei Punkt 4 links von dem Doppelpunkt anpassen).
+2) Terminal in dem Projekt-Ordner starten. ###  `mvn package ` ausfuehren
+3) ### `docker build --tag playground .`
+4) ### `docker run -d -p 8080:8080 --name playground playground`
+5) Service ist (nach kurzem warten) auf [http://localhost:8080](http://localhost:8080) verfügbar.
+
 ## Built With
 Für die spielerei nutze ich das Build-Management-Tool Maven(v. 3.6.3) von der Apache Software Foundation.
 * [Maven](https://maven.apache.org/)
