@@ -47,6 +47,14 @@
 			<version>3.2.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-spring -->
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-spring</artifactId>
+			<version>9.3.0</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -79,10 +87,18 @@
 		</dependency>
 
 		<dependency>
-			<groupId>cz.jirutka.spring</groupId>
-			<artifactId>embedmongo-spring</artifactId>
-			<version>RELEASE</version>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-core</artifactId>
+			<version>9.3.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.wicket/wicket-extensions -->
+		<dependency>
+			<groupId>org.apache.wicket</groupId>
+			<artifactId>wicket-extensions</artifactId>
+			<version>9.3.0</version>
+		</dependency>
+
 
 		<dependency>
 			<groupId>commons-fileupload</groupId>

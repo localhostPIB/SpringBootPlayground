@@ -4,12 +4,12 @@ import com.example.SpringBootPlayground.model.classes.Teilnehmer;
 import com.example.SpringBootPlayground.service.classes.TeilnehmerService;
 import com.example.SpringBootPlayground.utils.RandomUtils;
 import com.example.SpringBootPlayground.validators.EmailValidator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+
 
 import javax.servlet.http.HttpSession;
 
@@ -97,8 +97,8 @@ public class TeilnehmerController {
     }
 
 
-    @GetMapping(value = "/winner2")
-    private Teilnehmer findWinner2(Model model){
+    @GetMapping(value = "/winner2", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Teilnehmer findWinner2(Model model){
         int anzahlTeilnehmer   = RandomUtils.getTeilnehmerGewinner(teilnehmerService);
         int randomPickerNumber = RandomUtils.getRandomNumber(anzahlTeilnehmer);
         Teilnehmer gewinner    = teilnehmerService.getAllTeilnehmer().get(randomPickerNumber);
